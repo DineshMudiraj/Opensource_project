@@ -1,0 +1,33 @@
+<?php
+
+    $con = mysqli_conect('127.0.0.1','root','password');
+
+    if(!con)
+    {
+        echo 'not connected to server';
+    }
+ 
+    if(!mysqli_select_db($con,'Database_name'))
+    {
+        echo 'Database not selected';
+    }
+   
+    $ID  = $_post('ID');
+    $First_Name = $_post('firstname');
+    $Last_Name = $_post('lastname');
+    $Email = $_post('Email');
+
+    $sql = "Insert into person (ID,firstname,lastname,Email) VALUES ('$ID', '$First_Name', '$Last_Name', '$Email')";
+
+    if(!mysqli_query($con,$sql))
+    {
+        echo 'Not Inserted';
+    }
+    else
+    {
+        echo 'Inserted';
+    }
+    /uri is name of html file
+    header("refresh:2; url=insert.html");
+
+?>
