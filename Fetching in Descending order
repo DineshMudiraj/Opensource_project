@@ -1,0 +1,7 @@
+$sql = "SELECT id, first_name, last_name FROM registration ORDER BY first_name" DESC;
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. $row["Email]. "<br>";
